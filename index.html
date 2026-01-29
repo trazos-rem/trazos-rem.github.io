@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>REM | Obras Únicas Pintadas a Mano</title>
+    <meta name="description" content="Obras de arte únicas pintadas a mano sobre prendas. Cada pieza es una creación irrepetible.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23C48A6A%22>🎨</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-accent">R</span>E<span class="logo-accent">M</span>
+                </div>
+                
+                <button class="menu-toggle" aria-label="Menú" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                        <li><a href="#coleccion" class="nav-link">Colección</a></li>
+                        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Inicio con Proceso Integrado -->
+    <section class="hero" id="inicio">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Arte que</span>
+                    <span class="title-line accent">llevas puesto</span>
+                </h1>
+                <p class="hero-subtitle">Cada pincelada cuenta una historia única e irrepetible</p>
+                
+                <!-- Proceso Integrado en el Hero -->
+                <div class="process-integrated">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <img src="imagenes/icono/ico.webp" alt="Icono proceso artesanal" loading="lazy">
+                        </div>
+                        <div class="process-text-content">
+                            <h3 class="process-title">Proceso Artesanal</h3>
+                            <p class="process-description">
+                                En <strong>REM</strong> cada prenda es una obra única. No trabajamos con producción en masa ni estampados industriales. Cada diseño se realiza completamente a mano, pincel y pintura sobre la prenda.
+                            </p>
+                            <p class="process-description">
+                                Por eso, al realizar un pedido, es necesario esperar algunos días: ese tiempo es parte del proceso creativo, donde cada detalle se trabaja con dedicación para lograr una pieza original y duradera.
+                            </p>
+                            <p class="process-highlight">
+                                Ninguna remera es exactamente igual a otra, y ahí está su valor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botón rediseñado -->
+                <a href="#coleccion" class="btn btn-primary">
+                    <span>Ver colección</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colección -->
+    <section class="collection" id="coleccion">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Colección Única</h2>
+                <p class="section-subtitle">Piezas exclusivas, cada una diferente</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <article class="product-card" data-product="1" data-images="2" data-price="75000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda1/1.webp" alt="Obra única pintada a mano - Diseño floral abstracto" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$75.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card" data-product="2" data-images="2" data-price="68000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda2/1.webp" alt="Obra única pintada a mano - Patrón geométrico contemporáneo" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$68.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card" data-product="3" data-images="2" data-price="82000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda3/1.webp" alt="Obra única pintada a mano - Inspiración natural orgánica" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$82.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="product-card" data-product="4" data-images="2" data-price="72000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda4/1.webp" alt="Obra única pintada a mano - Trazos expresivos en acuarela" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$72.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+
+                <!-- Producto 5 -->
+                <article class="product-card" data-product="5" data-images="2" data-price="69000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda5/1.webp" alt="Obra única pintada a mano - Minimalismo con toque artístico" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$69.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+
+                <!-- Producto 6 -->
+                <article class="product-card" data-product="6" data-images="1" data-price="78000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda6/1.webp" alt="Obra única pintada a mano - Arte urbano abstracto" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$78.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+
+                <!-- Producto 7 -->
+                <article class="product-card" data-product="7" data-images="1" data-price="85000">
+                    <div class="product-image">
+                        <div class="image-wrapper">
+                            <img src="imagenes/prenda7/1.webp" alt="Obra única pintada a mano - Diseño exclusivo firmado" loading="lazy">
+                        </div>
+                        <span class="product-badge">Único</span>
+                    </div>
+                    <div class="product-info-simple">
+                        <div class="product-price">$85.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="contact-title">¿Listo para tu obra única?</h2>
+                    <p class="contact-subtitle">Conversemos sobre tu diseño personalizado</p>
+                    
+                    <div class="contact-methods">
+                        <a href="https://wa.me/5493764676093" class="contact-method whatsapp" target="_blank" rel="noopener">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+                                </svg>
+                            </div>
+                            <div class="method-info">
+                                <strong>WhatsApp</strong>
+                                <span>+54 9 376 467-6093</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.instagram.com/trazos_r.e.m?igsh=OXhzZXBsN2F1a3Jz" class="contact-method instagram" target="_blank" rel="noopener">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                </svg>
+                            </div>
+                            <div class="method-info">
+                                <strong>Instagram</strong>
+                                <span>@trazos_r.e.m</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p>Cada obra se realiza a mano, por lo que requiere tiempo y dedicación exclusiva para cada pieza.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">REM</div>
+                    <p class="tagline">Obras únicas, hechas a mano con amor</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#coleccion">Colección</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                
+                <div class="footer-legal">
+                    <p>© <span id="current-year">2024</span> REM. Todas las obras son originales.</p>
+                    <p class="footer-quote">"No es una tienda. Es un artista mostrando su obra."</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Producto -->
+    <div class="modal" id="product-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Cerrar modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <!-- Área principal de imagen -->
+                    <div class="gallery-main">
+                        <div class="main-image-container">
+                            <img id="modal-image" src="" alt="Imagen de la prenda" class="modal-image">
+                        </div>
+                        
+                        <!-- Controles de navegación -->
+                        <div class="gallery-controls">
+                            <button class="control-btn prev-btn" aria-label="Imagen anterior">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                            </button>
+                            <button class="control-btn next-btn" aria-label="Imagen siguiente">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Indicador de imagen -->
+                        <div class="gallery-indicator">
+                            <span id="current-indicator">1</span> / <span id="total-indicator">1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Información y botón WhatsApp -->
+                    <div class="gallery-info">
+                        <div class="info-content">
+                            <div class="gallery-price" id="modal-product-price">$75.000</div>
+                            <div class="whatsapp-container">
+                                <a href="#" class="btn-whatsapp whatsapp-modal-btn" target="_blank" rel="noopener">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+                                    </svg>
+                                    <span>Consultar por WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Miniaturas -->
+                    <div class="gallery-thumbnails-container">
+                        <div class="gallery-thumbnails" id="thumbnails">
+                            <!-- Miniaturas se generan dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
