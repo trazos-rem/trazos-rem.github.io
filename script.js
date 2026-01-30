@@ -1,9 +1,11 @@
 // Configuración
 const config = {
     whatsappNumber: '5493764676093',
+    developerWhatsappNumber: '5493765168963',
     instagramUrl: 'https://www.instagram.com/trazos_r.e.m?igsh=OXhzZXBsN2F1a3Jz',
     siteUrl: window.location.origin,
-    defaultMessage: `¡Hola! 👋\n\nMe interesa esta prenda única de REM:\n\n¿Podrías darme más información sobre disponibilidad, talles y tiempo de entrega?`
+    defaultMessage: `¡Hola! 👋\n\nMe interesa esta prenda única de REM:\n\n¿Podrías darme más información sobre disponibilidad, talles y tiempo de entrega?`,
+    developerMessage: `¡Hola Dilan! 👋\n\nVi el sitio web de REM y me encantó el diseño.\n\n¿Podrías darme información sobre tus servicios de desarrollo web?\n\n¡Gracias!`
 };
 
 // Estado global
@@ -35,6 +37,7 @@ function init() {
     initImageErrorHandling();
     initKeyboardNavigation();
     initMobileOptimizations();
+    initDeveloperLink();
     
     // Smooth page load
     window.addEventListener('load', () => {
@@ -559,6 +562,23 @@ function initContactMethods() {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 instagramBtn.click();
+            }
+        });
+    }
+}
+
+// Enlace del desarrollador
+function initDeveloperLink() {
+    const developerLink = document.querySelector('.developer-link');
+    if (developerLink) {
+        const encodedMessage = encodeURIComponent(config.developerMessage);
+        developerLink.href = `https://wa.me/${config.developerWhatsappNumber}?text=${encodedMessage}`;
+        
+        // Mejorar accesibilidad
+        developerLink.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                developerLink.click();
             }
         });
     }

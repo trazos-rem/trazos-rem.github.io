@@ -15,6 +15,8 @@
     --color-border: rgba(0, 0, 0, 0.08);
     --color-whatsapp: #25D366;
     --color-whatsapp-hover: #128C7E;
+    --color-developer: #4CAF50;
+    --color-developer-hover: #81C784;
     
     /* Tipografía */
     --font-heading: 'Playfair Display', serif;
@@ -748,6 +750,8 @@ section {
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
     line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .footer-quote {
@@ -755,6 +759,40 @@ section {
     margin-top: var(--space-sm);
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.5;
+}
+
+/* Footer Developer */
+.footer-developer {
+    margin-top: var(--space-sm);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.developer-link {
+    color: var(--color-developer);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 2px 4px;
+    border-radius: 4px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.developer-link:hover,
+.developer-link:focus {
+    color: var(--color-developer-hover);
+    background: rgba(76, 175, 80, 0.2);
+    text-decoration: underline;
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.developer-link::after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.8;
 }
 
 /* Modal de producto */
@@ -1256,6 +1294,15 @@ section {
     .footer-links {
         flex-direction: column;
         gap: var(--space-md);
+    }
+    
+    .footer-developer {
+        font-size: 0.8rem;
+        margin-top: var(--space-xs);
+    }
+    
+    .developer-link {
+        padding: 1px 3px;
     }
 }
 
@@ -1761,6 +1808,10 @@ button {
     
     .nav-link::after {
         height: 3px;
+    }
+    
+    .developer-link {
+        border: 1px solid currentColor;
     }
 }
 
