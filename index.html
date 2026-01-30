@@ -1,36 +1,144 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>REM | Obras Únicas Pintadas a Mano</title>
-    <meta name="description" content="Obras de arte únicas pintadas a mano sobre prendas. Cada pieza es una creación irrepetible.">
+    
+    <!-- SEO META TAGS -->
+    <title>REM | Obras Únicas Pintadas a Mano - Arte Textil Personalizado Argentina</title>
+    <meta name="description" content="REM crea prendas únicas con arte pintado a mano. Cada obra es irrepetible y personalizada. Convierte tu ropa en arte exclusivo hecho en Argentina. Prendas artesanales, diseños únicos, pintura sobre tela.">
+    <meta name="keywords" content="arte textil, pintado a mano, ropa personalizada, obras únicas, remeras artísticas, diseño exclusivo, arte argentino, prendas pintadas, diseño a mano, pintura sobre tela, artesanía, prendas artesanales, regalos originales, moda sustentable, slow fashion">
+    <meta name="author" content="REM - Arte Textil">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="AR">
+    <meta name="geo.placename" content="Argentina">
+    
+    <!-- OPEN GRAPH / SOCIAL MEDIA META TAGS -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="REM | Obras Únicas Pintadas a Mano">
+    <meta property="og:description" content="Cada prenda es una obra de arte única pintada completamente a mano. Arte textil personalizado hecho en Argentina.">
+    <meta property="og:image" content="https://trazos-rem.github.io/imagenes/icono/ico.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:alt" content="REM - Arte Textil Pintado a Mano - Obra única hecha a mano">
+    <meta property="og:url" content="https://trazos-rem.github.io">
+    <meta property="og:site_name" content="REM - Arte Textil">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:locale:alternate" content="es_ES">
+    
+    <!-- TWITTER CARD META TAGS -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="REM | Obras Únicas Pintadas a Mano">
+    <meta name="twitter:description" content="Prendas únicas con arte pintado a mano. Cada diseño es original y exclusivo. Arte textil hecho en Argentina.">
+    <meta name="twitter:image" content="https://trazos-rem.github.io/imagenes/icono/ico.webp">
+    <meta name="twitter:image:alt" content="Arte textil pintado a mano por REM - Diseño exclusivo hecho a mano">
+    <meta name="twitter:site" content="@trazos_r.e.m">
+    <meta name="twitter:creator" content="@trazos_r.e.m">
+    
+    <!-- CANONICAL URL -->
+    <link rel="canonical" href="https://trazos-rem.github.io">
+    
+    <!-- JSON-LD STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "REM - Obras Únicas Pintadas a Mano",
+      "description": "Arte textil personalizado con pinturas hechas completamente a mano sobre prendas. Cada pieza es única e irrepetible.",
+      "url": "https://trazos-rem.github.io",
+      "logo": "https://trazos-rem.github.io/imagenes/icono/ico.webp",
+      "image": "https://trazos-rem.github.io/imagenes/icono/ico.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Argentina"
+      },
+      "priceRange": "$$",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+5493764676093",
+        "contactType": "Customer Service",
+        "areaServed": "AR",
+        "availableLanguage": "Spanish"
+      },
+      "sameAs": [
+        "https://www.instagram.com/trazos_r.e.m"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Obra única pintada a mano sobre prenda",
+            "description": "Prenda de arte textil exclusiva pintada completamente a mano con pintura especial para tela",
+            "category": "Ropa artística",
+            "material": "Algodón con pintura textil",
+            "productionMethod": "Artesanal",
+            "brand": {
+              "@type": "Brand",
+              "name": "REM"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "ARS",
+              "price": "68000",
+              "availability": "https://schema.org/InStock",
+              "seller": {
+                "@type": "LocalBusiness",
+                "name": "REM Arte Textil"
+              }
+            }
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAVICON & APP ICONS -->
+    <link rel="icon" href="imagenes/icono/ico.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="imagenes/icono/ico.webp">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C48A6A">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="application-name" content="REM Arte Textil">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#C48A6A">
+    <meta name="msapplication-TileImage" content="imagenes/icono/ico.webp">
+    
+    <!-- PRELOAD CRITICAL RESOURCES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23C48A6A%22>🎨</text></svg>">
+    
+    <!-- PRELOAD IMAGE FOR SOCIAL MEDIA -->
+    <link rel="preload" href="imagenes/icono/ico.webp" as="image" type="image/webp">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <div class="logo" aria-label="REM - Arte Textil">
                     <span class="logo-accent">R</span>E<span class="logo-accent">M</span>
                 </div>
                 
-                <button class="menu-toggle" aria-label="Menú" aria-expanded="false">
+                <button class="menu-toggle" aria-label="Menú" aria-expanded="false" aria-controls="main-navigation">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 
-                <nav class="nav">
-                    <ul>
-                        <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                        <li><a href="#coleccion" class="nav-link">Colección</a></li>
-                        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <nav class="nav" id="main-navigation" aria-label="Navegación principal">
+                    <ul role="menubar">
+                        <li role="none"><a href="#inicio" class="nav-link" role="menuitem">Inicio</a></li>
+                        <li role="none"><a href="#coleccion" class="nav-link" role="menuitem">Colección</a></li>
+                        <li role="none"><a href="#contacto" class="nav-link" role="menuitem">Contacto</a></li>
                     </ul>
                 </nav>
             </div>
@@ -54,10 +162,10 @@
                 <div class="process-integrated">
                     <div class="process-card">
                         <div class="process-icon">
-                            <img src="imagenes/icono/ico.webp" alt="Icono proceso artesanal" loading="lazy">
+                            <img src="imagenes/icono/ico.webp" alt="Icono del proceso artesanal de REM" loading="lazy" width="80" height="80">
                         </div>
                         <div class="process-text-content">
-                            <h3 class="process-title">Proceso Artesanal</h3>
+                            <h2 class="process-title">Proceso Artesanal</h2>
                             <p class="process-description">
                                 En <strong>REM</strong> cada prenda es una obra única. No trabajamos con producción en masa ni estampados industriales. Cada diseño se realiza completamente a mano, pincel y pintura sobre la prenda.
                             </p>
@@ -92,13 +200,13 @@
                 <article class="product-card" data-product="1" data-images="2" data-price="75000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda1/1.webp" alt="Obra única pintada a mano - Diseño floral abstracto" loading="lazy">
+                            <img src="imagenes/prenda1/1.webp" alt="Obra única pintada a mano - Diseño floral abstracto sobre remera negra" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$75.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="75.000 pesos argentinos">$75.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
 
@@ -106,13 +214,13 @@
                 <article class="product-card" data-product="2" data-images="2" data-price="68000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda2/1.webp" alt="Obra única pintada a mano - Patrón geométrico contemporáneo" loading="lazy">
+                            <img src="imagenes/prenda2/1.webp" alt="Obra única pintada a mano - Patrón geométrico contemporáneo sobre remera blanca" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$68.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="68.000 pesos argentinos">$68.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
 
@@ -120,13 +228,13 @@
                 <article class="product-card" data-product="3" data-images="2" data-price="82000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda3/1.webp" alt="Obra única pintada a mano - Inspiración natural orgánica" loading="lazy">
+                            <img src="imagenes/prenda3/1.webp" alt="Obra única pintada a mano - Inspiración natural orgánica con hojas y flores" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$82.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="82.000 pesos argentinos">$82.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
 
@@ -134,13 +242,13 @@
                 <article class="product-card" data-product="4" data-images="2" data-price="72000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda4/1.webp" alt="Obra única pintada a mano - Trazos expresivos en acuarela" loading="lazy">
+                            <img src="imagenes/prenda4/1.webp" alt="Obra única pintada a mano - Trazos expresivos en acuarela sobre algodón" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$72.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="72.000 pesos argentinos">$72.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
 
@@ -148,13 +256,13 @@
                 <article class="product-card" data-product="5" data-images="2" data-price="69000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda5/1.webp" alt="Obra única pintada a mano - Minimalismo con toque artístico" loading="lazy">
+                            <img src="imagenes/prenda5/1.webp" alt="Obra única pintada a mano - Minimalismo con toque artístico abstracto" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$69.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="69.000 pesos argentinos">$69.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
 
@@ -162,13 +270,13 @@
                 <article class="product-card" data-product="6" data-images="1" data-price="78000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda6/1.webp" alt="Obra única pintada a mano - Arte urbano abstracto" loading="lazy">
+                            <img src="imagenes/prenda6/1.webp" alt="Obra única pintada a mano - Arte urbano abstracto con colores vibrantes" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$78.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="78.000 pesos argentinos">$78.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
 
@@ -176,13 +284,13 @@
                 <article class="product-card" data-product="7" data-images="1" data-price="85000">
                     <div class="product-image">
                         <div class="image-wrapper">
-                            <img src="imagenes/prenda7/1.webp" alt="Obra única pintada a mano - Diseño exclusivo firmado" loading="lazy">
+                            <img src="imagenes/prenda7/1.webp" alt="Obra única pintada a mano - Diseño exclusivo firmado por el artista" loading="lazy" width="400" height="533">
                         </div>
                         <span class="product-badge">Único</span>
                     </div>
                     <div class="product-info-simple">
-                        <div class="product-price">$85.000</div>
-                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda">Más información</button>
+                        <div class="product-price" aria-label="85.000 pesos argentinos">$85.000</div>
+                        <button class="btn btn-simple product-view" aria-label="Ver más información sobre esta prenda única">Más información</button>
                     </div>
                 </article>
             </div>
@@ -198,7 +306,7 @@
                     <p class="contact-subtitle">Conversemos sobre tu diseño personalizado</p>
                     
                     <div class="contact-methods">
-                        <a href="https://wa.me/5493764676093" class="contact-method whatsapp" target="_blank" rel="noopener">
+                        <a href="https://wa.me/5493764676093" class="contact-method whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
                             <div class="method-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
@@ -210,7 +318,7 @@
                             </div>
                         </a>
                         
-                        <a href="https://www.instagram.com/trazos_r.e.m?igsh=OXhzZXBsN2F1a3Jz" class="contact-method instagram" target="_blank" rel="noopener">
+                        <a href="https://www.instagram.com/trazos_r.e.m?igsh=OXhzZXBsN2F1a3Jz" class="contact-method instagram" target="_blank" rel="noopener noreferrer" aria-label="Seguir en Instagram">
                             <div class="method-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -241,15 +349,15 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="logo">REM</div>
+                    <div class="logo" aria-label="REM - Arte Textil">REM</div>
                     <p class="tagline">Obras únicas, hechas a mano con amor</p>
                 </div>
                 
-                <div class="footer-links">
+                <nav class="footer-links" aria-label="Enlaces rápidos">
                     <a href="#inicio">Inicio</a>
                     <a href="#coleccion">Colección</a>
                     <a href="#contacto">Contacto</a>
-                </div>
+                </nav>
                 
                 <div class="footer-legal">
                     <p>© <span id="current-year">2024</span> REM. Todas las obras son originales.</p>
@@ -260,10 +368,10 @@
     </footer>
 
     <!-- Modal de Producto -->
-    <div class="modal" id="product-modal">
-        <div class="modal-backdrop"></div>
+    <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-backdrop" tabindex="-1"></div>
         <div class="modal-content">
-            <button class="modal-close" aria-label="Cerrar modal">
+            <button class="modal-close" aria-label="Cerrar modal" tabindex="0">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M18 6L6 18M6 6l12 12"/>
                 </svg>
@@ -279,12 +387,12 @@
                         
                         <!-- Controles de navegación -->
                         <div class="gallery-controls">
-                            <button class="control-btn prev-btn" aria-label="Imagen anterior">
+                            <button class="control-btn prev-btn" aria-label="Imagen anterior" tabindex="0">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path d="M15 18l-6-6 6-6"/>
                                 </svg>
                             </button>
-                            <button class="control-btn next-btn" aria-label="Imagen siguiente">
+                            <button class="control-btn next-btn" aria-label="Imagen siguiente" tabindex="0">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                     <path d="M9 18l6-6-6-6"/>
                                 </svg>
@@ -292,7 +400,7 @@
                         </div>
                         
                         <!-- Indicador de imagen -->
-                        <div class="gallery-indicator">
+                        <div class="gallery-indicator" aria-live="polite" aria-atomic="true">
                             <span id="current-indicator">1</span> / <span id="total-indicator">1</span>
                         </div>
                     </div>
@@ -300,9 +408,9 @@
                     <!-- Información y botón WhatsApp -->
                     <div class="gallery-info">
                         <div class="info-content">
-                            <div class="gallery-price" id="modal-product-price">$75.000</div>
+                            <div class="gallery-price" id="modal-product-price" aria-label="Precio">$75.000</div>
                             <div class="whatsapp-container">
-                                <a href="#" class="btn-whatsapp whatsapp-modal-btn" target="_blank" rel="noopener">
+                                <a href="#" class="btn-whatsapp whatsapp-modal-btn" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
                                     </svg>
@@ -314,7 +422,7 @@
                     
                     <!-- Miniaturas -->
                     <div class="gallery-thumbnails-container">
-                        <div class="gallery-thumbnails" id="thumbnails">
+                        <div class="gallery-thumbnails" id="thumbnails" role="tablist" aria-label="Miniaturas de imágenes">
                             <!-- Miniaturas se generan dinámicamente -->
                         </div>
                     </div>
@@ -324,6 +432,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

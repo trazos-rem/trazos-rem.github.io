@@ -1,0 +1,23 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/imagenes/icono/ico.webp
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: image/webp
+
+/*.webp
+  Cache-Control: public, max-age=604800
+  Content-Type: image/webp
+
+/*.css
+  Cache-Control: public, max-age=604800
+  Content-Type: text/css
+
+/*.js
+  Cache-Control: public, max-age=604800
+  Content-Type: application/javascript

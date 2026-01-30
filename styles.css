@@ -43,12 +43,16 @@
     --radius-lg: 16px;
     --radius-xl: 20px;
     --radius-full: 50%;
+    
+    /* iOS fix para 100vh */
+    --vh: 1vh;
 }
 
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -59,6 +63,9 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .container {
@@ -81,11 +88,17 @@ body {
     border-bottom: 1px solid var(--color-border);
     padding: var(--space-sm) 0;
     transition: var(--transition);
+    transform: translateY(0);
+}
+
+.header.scrolling {
+    transform: translateY(-100%);
 }
 
 .header.scrolled {
     padding: var(--space-xs) 0;
     box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .header-content {
@@ -101,6 +114,7 @@ body {
     font-weight: 600;
     color: var(--color-primary);
     letter-spacing: -0.5px;
+    text-decoration: none;
 }
 
 .logo-accent {
@@ -118,10 +132,12 @@ body {
     cursor: pointer;
     padding: var(--space-xs);
     z-index: 1002;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     align-items: center;
     justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .menu-toggle span {
@@ -161,6 +177,7 @@ body {
     position: relative;
     padding: var(--space-xs) 0;
     transition: var(--transition);
+    outline: none;
 }
 
 .nav-link::after {
@@ -177,7 +194,6 @@ body {
 .nav-link:hover,
 .nav-link:focus {
     color: var(--color-accent);
-    outline: none;
 }
 
 .nav-link:hover::after,
@@ -189,6 +205,7 @@ body {
 /* Hero con proceso integrado */
 .hero {
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -302,7 +319,7 @@ body {
 }
 
 .process-card:hover .process-icon img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .process-text-content {
@@ -357,6 +374,8 @@ body {
     white-space: nowrap;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    outline: none;
 }
 
 /* Botón cuadrado rediseñado */
@@ -376,14 +395,13 @@ body {
 .btn-primary:hover,
 .btn-primary:focus {
     background: #B07A5A;
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-    outline: none;
     border-color: var(--color-accent);
 }
 
 .btn-primary:active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(0);
 }
 
 .btn svg {
@@ -397,6 +415,7 @@ body {
 section {
     padding: var(--space-xl) 0;
     position: relative;
+    scroll-margin-top: 80px;
 }
 
 .section-header {
@@ -438,9 +457,11 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
+    outline: none;
 }
 
-.product-card:hover {
+.product-card:hover,
+.product-card:focus-within {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
 }
@@ -518,6 +539,7 @@ section {
     border-radius: var(--radius-md);
     transition: var(--transition);
     font-weight: 500;
+    outline: none;
 }
 
 .btn-simple:hover,
@@ -525,7 +547,6 @@ section {
     background: #e9e5df;
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
-    outline: none;
 }
 
 /* Contacto */
@@ -576,13 +597,13 @@ section {
     transition: var(--transition);
     border: 1px solid var(--color-border);
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .contact-method:hover,
 .contact-method:focus {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
-    outline: none;
 }
 
 .contact-method.whatsapp:hover,
@@ -714,12 +735,13 @@ section {
     text-decoration: none;
     transition: var(--transition);
     font-weight: 500;
+    outline: none;
 }
 
 .footer-links a:hover,
 .footer-links a:focus {
     color: var(--color-white);
-    outline: none;
+    text-decoration: underline;
 }
 
 .footer-legal {
@@ -810,6 +832,7 @@ section {
     transition: var(--transition);
     box-shadow: var(--shadow-md);
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .modal-close:hover,
@@ -817,7 +840,6 @@ section {
     background: var(--color-accent);
     color: var(--color-white);
     transform: rotate(90deg);
-    outline: none;
 }
 
 .modal-close svg {
@@ -853,6 +875,7 @@ section {
     justify-content: center;
     min-height: 400px;
     max-height: 60vh;
+    touch-action: pan-y pinch-zoom;
 }
 
 .main-image-container {
@@ -903,6 +926,7 @@ section {
     box-shadow: var(--shadow-md);
     opacity: 0.9;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .control-btn:hover,
@@ -911,7 +935,6 @@ section {
     color: var(--color-white);
     transform: scale(1.1);
     opacity: 1;
-    outline: none;
 }
 
 .control-btn svg {
@@ -984,6 +1007,7 @@ section {
     width: 100%;
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .btn-whatsapp:hover,
@@ -991,7 +1015,6 @@ section {
     background: var(--color-whatsapp-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
-    outline: none;
 }
 
 .btn-whatsapp svg {
@@ -1008,6 +1031,8 @@ section {
     flex-shrink: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-light);
 }
 
 .gallery-thumbnails {
@@ -1029,13 +1054,13 @@ section {
     border: 2px solid transparent;
     flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .thumbnail:hover,
 .thumbnail:focus {
     opacity: 0.8;
     transform: scale(1.05);
-    outline: none;
 }
 
 .thumbnail.active {
@@ -1117,6 +1142,7 @@ section {
         right: -100%;
         width: 100%;
         height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -1176,6 +1202,7 @@ section {
     
     .modal-content {
         max-height: 98vh;
+        max-height: calc(var(--vh, 1vh) * 98);
         border-radius: var(--radius-lg);
     }
     
@@ -1189,6 +1216,7 @@ section {
     .gallery-main {
         min-height: 300px;
         max-height: 50vh;
+        max-height: calc(var(--vh, 1vh) * 50);
     }
     
     .control-btn {
@@ -1245,6 +1273,7 @@ section {
     
     .hero {
         min-height: 90vh;
+        min-height: calc(var(--vh, 1vh) * 90);
         padding-top: 70px;
     }
     
@@ -1276,6 +1305,7 @@ section {
     .gallery-main {
         min-height: 250px;
         max-height: 45vh;
+        max-height: calc(var(--vh, 1vh) * 45);
     }
     
     .main-image-container {
@@ -1412,11 +1442,13 @@ section {
     .modal-content {
         border-radius: 12px;
         max-height: 98vh;
+        max-height: calc(var(--vh, 1vh) * 98);
     }
     
     .gallery-main {
         min-height: 250px;
         max-height: 45vh;
+        max-height: calc(var(--vh, 1vh) * 45);
     }
     
     .gallery-price {
@@ -1438,15 +1470,18 @@ section {
 @media (max-height: 500px) and (orientation: landscape) {
     .hero {
         min-height: 120vh;
+        min-height: calc(var(--vh, 1vh) * 120);
         padding-top: 70px;
     }
     
     .modal-content {
         max-height: 85vh;
+        max-height: calc(var(--vh, 1vh) * 85);
     }
     
     .gallery-main {
         max-height: 50vh;
+        max-height: calc(var(--vh, 1vh) * 50);
     }
     
     .gallery-thumbnails-container {
@@ -1494,17 +1529,17 @@ section {
     .hero,
     .collection,
     .contact {
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    .modal-content {
+        padding-bottom: env(safe-area-inset-bottom);
     }
 }
 
 /* Mejorar visibilidad en móviles con temas oscuros */
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: var(--color-white);
-    }
-    
     .modal-backdrop {
         background: rgba(0, 0, 0, 0.95);
     }
@@ -1528,24 +1563,32 @@ section {
         width: 44px;
         height: 44px;
     }
+    
+    /* Deshabilitar hover effects en touch devices */
+    .product-card:hover,
+    .contact-method:hover,
+    .btn:hover,
+    .thumbnail:hover {
+        transform: none;
+    }
+    
+    .product-card:active,
+    .contact-method:active,
+    .btn:active,
+    .thumbnail:active {
+        transform: scale(0.98);
+    }
 }
 
 /* Optimizar para conexiones lentas */
 @media (prefers-reduced-data: reduce) {
     .hero-pattern {
-        display: none;
+        opacity: 0.1;
     }
     
-    img {
-        loading: lazy;
-    }
-}
-
-/* Mejoras para lectores de pantalla */
-@media speech {
-    .hero-pattern,
-    .product-badge::before {
-        display: none;
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
@@ -1572,17 +1615,23 @@ section {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
     
     .fade-in {
         animation: none;
         opacity: 1;
     }
+    
+    .hero {
+        transform: none !important;
+    }
 }
 
 /* Animaciones suaves */
 .fade-in {
     animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
 }
 
 @keyframes fadeIn {
@@ -1616,43 +1665,11 @@ section {
     background: #B07A5A;
 }
 
-/* Estilos para touch */
-@media (hover: none) and (pointer: coarse) {
-    .product-card:hover {
-        transform: none;
-    }
-    
-    .btn-simple:hover,
-    .btn-simple:focus,
-    .btn-primary:hover,
-    .btn-primary:focus,
-    .btn-whatsapp:hover,
-    .btn-whatsapp:focus,
-    .contact-method:hover,
-    .contact-method:focus,
-    .control-btn:hover,
-    .control-btn:focus {
-        transform: none;
-    }
-    
-    .control-btn,
-    .modal-close,
-    .btn,
-    .contact-method {
-        min-height: 44px;
-        min-width: 44px;
-    }
-    
-    .thumbnail {
-        min-height: 44px;
-        min-width: 44px;
-    }
-}
-
 /* Prevenir zoom en inputs en iOS */
 input,
 textarea,
-select {
+select,
+button {
     font-size: 16px !important;
 }
 
@@ -1662,14 +1679,22 @@ select {
     color: var(--color-white);
 }
 
-/* Mejorar enfoque para accesibilidad */
-:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+::-moz-selection {
+    background: var(--color-accent);
+    color: var(--color-white);
 }
 
-:focus:not(:focus-visible) {
-    outline: none;
+/* Mejorar enfoque para accesibilidad */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Estilos para navegación por teclado */
+.keyboard-navigation :focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 /* Optimizar para impresión */
@@ -1685,6 +1710,7 @@ select {
     body {
         color: #000;
         background: #fff;
+        font-size: 12pt;
     }
     
     .container {
@@ -1694,5 +1720,66 @@ select {
     section {
         padding: 1rem 0;
         break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .hero-title {
+        font-size: 24pt;
+    }
+    
+    .process-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+    
+    .product-grid {
+        display: block;
+    }
+    
+    .product-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* Ajustes para alto contraste */
+@media (prefers-contrast: high) {
+    .btn-primary,
+    .btn-whatsapp,
+    .contact-method.whatsapp,
+    .contact-method.instagram {
+        border: 2px solid currentColor;
+    }
+    
+    .nav-link::after {
+        height: 3px;
+    }
+}
+
+/* Ajustes para preferencias de transparencia reducida */
+@media (prefers-reduced-transparency: reduce) {
+    .header,
+    .modal-backdrop,
+    .process-card,
+    .product-badge,
+    .gallery-indicator {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* Corrección para iOS Safari 100vh */
+@supports (-webkit-touch-callout: none) {
+    .hero,
+    .modal-content {
+        height: -webkit-fill-available;
     }
 }

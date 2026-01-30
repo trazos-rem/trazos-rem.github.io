@@ -2,7 +2,8 @@
 const config = {
     whatsappNumber: '5493764676093',
     instagramUrl: 'https://www.instagram.com/trazos_r.e.m?igsh=OXhzZXBsN2F1a3Jz',
-    siteUrl: window.location.origin
+    siteUrl: window.location.origin,
+    defaultMessage: `¡Hola! 👋\n\nMe interesa esta prenda única de REM:\n\n¿Podrías darme más información sobre disponibilidad, talles y tiempo de entrega?`
 };
 
 // Estado global
@@ -53,51 +54,72 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.querySelector('.header');
 
+    if (!menuToggle || !nav) return;
+
     // Toggle menú móvil
-    if (menuToggle) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isActive = menuToggle.classList.toggle('active');
-            nav.classList.toggle('active');
-            document.body.style.overflow = isActive ? 'hidden' : '';
-            menuToggle.setAttribute('aria-expanded', isActive);
-        });
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isActive = !menuToggle.classList.contains('active');
+        
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = isActive ? 'hidden' : '';
+        menuToggle.setAttribute('aria-expanded', isActive);
+        
+        // Asegurar accesibilidad
+        if (isActive) {
+            const firstLink = nav.querySelector('a');
+            if (firstLink) firstLink.focus();
+        }
+    });
 
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (nav.classList.contains('active') && 
-                !nav.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                closeMobileMenu();
-            }
-        });
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && 
+            !nav.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            closeMobileMenu();
+        }
+    });
 
-        // Cerrar menú con ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && nav.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-    }
+    // Cerrar menú con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
 
     // Cerrar menú al hacer clic en enlace
     navLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
+        });
     });
 
     // Header scroll
     let scrollTimeout;
+    let lastScrollTop = 0;
+    
     window.addEventListener('scroll', () => {
         clearTimeout(scrollTimeout);
         
-        // Añadir clase mientras se hace scroll
-        header.classList.add('scrolling');
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Ocultar/mostrar header al hacer scroll
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            header.classList.add('scrolling', 'scrolled');
+        } else {
+            header.classList.remove('scrolling');
+        }
+        
+        lastScrollTop = scrollTop;
         
         scrollTimeout = setTimeout(() => {
             header.classList.remove('scrolling');
             
-            // Añadir clase scrolled después de cierto punto
-            if (window.scrollY > 50) {
+            if (scrollTop > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
@@ -106,12 +128,11 @@ function initNavigation() {
     });
 
     function closeMobileMenu() {
-        if (menuToggle && nav) {
-            menuToggle.classList.remove('active');
-            nav.classList.remove('active');
-            document.body.style.overflow = '';
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
+        menuToggle.classList.remove('active');
+        nav.classList.remove('active');
+        document.body.style.overflow = '';
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.focus();
     }
 }
 
@@ -133,6 +154,9 @@ function initScrollEffects() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Actualizar URL sin recargar
+                history.pushState(null, null, href);
             }
         });
     });
@@ -167,7 +191,7 @@ function initProductCards() {
         
         // Enter key para accesibilidad
         card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
                 e.preventDefault();
                 openProductModal(card);
             }
@@ -231,7 +255,9 @@ function openProductModal(card) {
     const totalIndicator = document.getElementById('total-indicator');
     
     if (priceElement) {
-        priceElement.textContent = `$${parseInt(productPrice).toLocaleString('es-AR')}`;
+        const formattedPrice = parseInt(productPrice).toLocaleString('es-AR');
+        priceElement.textContent = `$${formattedPrice}`;
+        priceElement.setAttribute('aria-label', `${formattedPrice} pesos argentinos`);
     }
     
     if (currentIndicator) {
@@ -253,13 +279,11 @@ function openProductModal(card) {
     const nextBtn = document.querySelector('.next-btn');
     
     if (prevBtn && nextBtn) {
-        if (imagesCount > 1) {
-            prevBtn.style.display = 'flex';
-            nextBtn.style.display = 'flex';
-        } else {
-            prevBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
-        }
+        const shouldShowControls = imagesCount > 1;
+        prevBtn.style.display = shouldShowControls ? 'flex' : 'none';
+        nextBtn.style.display = shouldShowControls ? 'flex' : 'none';
+        prevBtn.setAttribute('aria-hidden', !shouldShowControls);
+        nextBtn.setAttribute('aria-hidden', !shouldShowControls);
     }
     
     // Actualizar botón de WhatsApp
@@ -267,6 +291,7 @@ function openProductModal(card) {
     
     // Mostrar modal
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     isModalOpen = true;
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
@@ -287,14 +312,16 @@ function loadImage(imageNumber, productId) {
     
     // Crear URL de imagen
     const imageUrl = `imagenes/prenda${productId}/${imageNumber}.webp`;
+    const altText = `Prenda ${productId} - Imagen ${imageNumber} de REM Arte Textil`;
     
     // Precargar imagen
     const img = new Image();
     img.src = imageUrl;
+    img.alt = altText;
     
     img.onload = () => {
         modalImage.src = imageUrl;
-        modalImage.alt = `Prenda ${productId} - Imagen ${imageNumber}`;
+        modalImage.alt = altText;
         
         // Animación suave de entrada
         requestAnimationFrame(() => {
@@ -313,12 +340,15 @@ function loadImage(imageNumber, productId) {
         
         // Actualizar índice actual
         currentImageIndex = imageNumber - 1;
+        
+        // Actualizar aria-label para accesibilidad
+        modalImage.setAttribute('aria-label', altText);
     };
     
     img.onerror = () => {
         // Imagen de fallback
         modalImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjNDhhNmEiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTcgMjFhNCA0IDAgMDE0LTRWNWEyIDIgMCAwMTItMmg0YTIgMiAwIDAxMiAydjEyYTQgNCAwIDAxLTQgNHptMCAwaDEyYTIgMiAwIDAwMi0ydi00YTIgMiAwIDAwLTItMmgtMi4zNDNNMTEgNy4zNDNsMS42NTctMS42NTdhMiAyIDAgMDEyLjgyOCAwbDIuODI5IDIuODI5YTIgMiAwIDAxMCAyLjgyOGwtOC40ODYgOC40ODVNMTcgMTdoLjAxIi8+PC9zdmc+';
-        modalImage.alt = 'Imagen no disponible';
+        modalImage.alt = 'Imagen no disponible - REM Arte Textil';
         modalImage.style.opacity = '0.5';
     };
 }
@@ -334,12 +364,13 @@ function updateThumbnails(productId, imagesCount) {
         thumbnail.className = i === 1 ? 'thumbnail active' : 'thumbnail';
         thumbnail.dataset.index = i - 1;
         thumbnail.tabIndex = 0;
-        thumbnail.setAttribute('role', 'button');
+        thumbnail.setAttribute('role', 'tab');
         thumbnail.setAttribute('aria-label', `Ver imagen ${i}`);
+        thumbnail.setAttribute('aria-selected', i === 1);
         
         const img = document.createElement('img');
         img.src = `imagenes/prenda${productId}/${i}.webp`;
-        img.alt = `Miniatura ${i}`;
+        img.alt = `Miniatura ${i} de la prenda`;
         img.loading = 'lazy';
         img.decoding = 'async';
         
@@ -350,6 +381,7 @@ function updateThumbnails(productId, imagesCount) {
         // Evento para cambiar imagen
         const handleThumbnailClick = () => {
             loadImage(i, productId);
+            thumbnail.focus();
         };
         
         thumbnail.addEventListener('click', handleThumbnailClick);
@@ -370,8 +402,10 @@ function updateThumbnails(productId, imagesCount) {
 function updateActiveThumbnail(index) {
     const thumbnails = document.querySelectorAll('.thumbnail');
     thumbnails.forEach((thumb, i) => {
-        thumb.classList.toggle('active', i === index);
-        thumb.setAttribute('aria-selected', i === index);
+        const isActive = i === index;
+        thumb.classList.toggle('active', isActive);
+        thumb.setAttribute('aria-selected', isActive);
+        thumb.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 }
 
@@ -381,22 +415,9 @@ function updateWhatsAppButton(price, productId) {
     
     const formattedPrice = parseInt(price).toLocaleString('es-AR');
     
-    const message = `¡Hola! 👋\n\nMe interesa esta prenda única de REM:\n\n💰 *$${formattedPrice}*\n\n¿Podrías darme más información sobre disponibilidad, talles y tiempo de entrega?`;
+    const message = `${config.defaultMessage}\n\n💰 Precio: $${formattedPrice}\n🆔 Producto: ${productId}`;
     
     whatsappBtn.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(message)}`;
-    
-    // Añadir eventos para mejorar UX
-    whatsappBtn.addEventListener('click', (e) => {
-        if (!isModalOpen) {
-            e.preventDefault();
-            return;
-        }
-        
-        // Pequeño delay para que se note el hover
-        setTimeout(() => {
-            whatsappBtn.classList.add('clicked');
-        }, 100);
-    });
 }
 
 function closeModal() {
@@ -404,6 +425,7 @@ function closeModal() {
     if (!modal) return;
     
     modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     isModalOpen = false;
     
     // Restaurar scroll
@@ -463,7 +485,8 @@ function initGalleryControls() {
         mainImage.addEventListener('click', (e) => {
             // Solo en móviles y si hay más de una imagen
             if (window.innerWidth <= 768 && totalImages > 1 && 
-                !e.target.closest('.control-btn')) {
+                !e.target.closest('.control-btn') &&
+                !e.target.closest('.thumbnail')) {
                 const rect = mainImage.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 
@@ -543,32 +566,34 @@ function initContactMethods() {
 
 // Animaciones
 function initAnimations() {
-    // Observador de intersección
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '50px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
+    // Observador de intersección para lazy loading
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '50px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos
+        document.querySelectorAll('section, .product-card, .contact-method').forEach(el => {
+            if (el) observer.observe(el);
         });
-    }, observerOptions);
-    
-    // Observar elementos
-    document.querySelectorAll('section, .product-card, .contact-method').forEach(el => {
-        if (el) observer.observe(el);
-    });
+    }
     
     // Efecto parallax suave para hero
     const hero = document.querySelector('.hero');
     if (hero && window.innerWidth > 768) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const rate = scrolled * 0.5;
+            const rate = scrolled * 0.3;
             hero.style.transform = `translateY(${rate}px)`;
         });
     }
@@ -582,8 +607,8 @@ function initImageErrorHandling() {
             const img = e.target;
             if (!img.dataset.fallbackHandled) {
                 img.dataset.fallbackHandled = true;
-                img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjNDhhNmEiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTcgMjFhNCA0IDAgMDE0LTRWNWEyIDIgMCAwMTItMmg0YTIgMiAwIDAxMiAydjEyYTQgNCAwIDAxLTQgNHptMCAwaDEyYTIgMiAwIDAwMi0ydi00YTIgMiAwIDAwLTItMmgtMi4jNDNNMTEgNy4zNDNsMS42NTctMS42NTdhMiAyIDAgMDEyLjgyOCAwbDIuODI5IDIuODI5YTIgMiAwIDAxMCAyLjgyOGwtOC40ODYgOC40ODVNMTcgMTdoLjAxIi8+PC9zdmc+';
-                img.alt = 'Imagen no disponible';
+                img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjNDhhNmEiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTcgMjFhNCA0IDAgMDE0LTRWNWEyIDIgMCAwMTItMmg0YTIgMiAwIDAxMiAydjEyYTQgNCAwIDAxLTQgNHptMCAwaDEyYTIgMiAwIDAwMi0ydi00YTIgMiAwIDAwLTItMmgtMi4zNDNNMTEgNy4zNDNsMS42NTctMS42NTdhMiAyIDAgMDEyLjgyOCAwbDIuODI5IDIuODI5YTIgMiAwIDAxMCAyLjgyOGwtOC40ODYgOC40ODVNMTcgMTdoLjAxIi8+PC9zdmc+';
+                img.alt = 'Imagen no disponible - REM Arte Textil';
                 img.style.opacity = '0.3';
             }
         }
@@ -603,6 +628,21 @@ function initKeyboardNavigation() {
             case 'ArrowRight':
                 e.preventDefault();
                 navigateGallery('next');
+                break;
+            case 'Tab':
+                // Mantener el foco dentro del modal
+                const modal = document.getElementById('product-modal');
+                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
                 break;
             case 'Escape':
                 closeModal();
@@ -645,8 +685,10 @@ function initMobileOptimizations() {
     }
     
     // Manejar cambios de orientación
+    let orientationTimeout;
     window.addEventListener('orientationchange', () => {
-        setTimeout(() => {
+        clearTimeout(orientationTimeout);
+        orientationTimeout = setTimeout(() => {
             // Recalcular dimensiones del modal
             if (isModalOpen) {
                 const modalImage = document.getElementById('modal-image');
@@ -654,8 +696,20 @@ function initMobileOptimizations() {
                     modalImage.style.transform = 'scale(1)';
                 }
             }
-        }, 100);
+            
+            // Recalcular altura del viewport en iOS
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        }, 300);
     });
+    
+    // Arreglo para iOS 100vh issue
+    const setVH = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    
+    setVH();
+    window.addEventListener('resize', setVH);
 }
 
 // Manejo de resize y orientación
@@ -673,9 +727,9 @@ window.addEventListener('resize', () => {
     }, 250);
 });
 
-// Optimización de performance
+// Optimización de performance con IntersectionObserver
 if ('IntersectionObserver' in window) {
-    // Precargar imágenes cuando están cerca de ser visibles
+    // Lazy loading para imágenes que no están en viewport
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -704,7 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.setAttribute('type', 'button');
     });
     
-    // Mejorar focus visible
+    // Mejorar focus visible para navegación por teclado
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
             document.body.classList.add('keyboard-navigation');
@@ -714,17 +768,32 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', () => {
         document.body.classList.remove('keyboard-navigation');
     });
+    
+    // Añadir etiquetas ARIA a elementos dinámicos
+    const modal = document.getElementById('product-modal');
+    if (modal) {
+        modal.setAttribute('aria-labelledby', 'modal-title');
+    }
 });
 
-// Debug helper
+// Debug helper para desarrollo
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     console.log('REM - Modo desarrollo activado');
+    
+    // Mostrar errores de imágenes en consola
+    window.addEventListener('error', (e) => {
+        if (e.target.tagName === 'IMG') {
+            console.warn('Error cargando imagen:', e.target.src);
+        }
+    }, true);
 }
 
-// Exportar funciones principales para depuración
-window.REM = {
-    openProductModal,
-    closeModal,
-    navigateGallery,
-    config
-};
+// Exportar funciones principales para depuración (solo en desarrollo)
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    window.REM = {
+        openProductModal,
+        closeModal,
+        navigateGallery,
+        config
+    };
+}
